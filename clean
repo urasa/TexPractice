@@ -1,0 +1,8 @@
+rm -fv *.blg
+rm -fv *.log
+rm -fv *.toc
+rm -fv *.pdf
+rm -fv *.dvi
+rm -fv *.bbl
+rm -fv *.orig
+rm -fv *.aux
