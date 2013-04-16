@@ -9,7 +9,7 @@ all: $(NAME:%=%.pdf)
 %.pdf: %.dvi
 	dvipdfm $<
 %.dvi: %.tex
-	platex $<
+	platex $< && platex $<
 
 clean:
 	@rm -fv *.blg
