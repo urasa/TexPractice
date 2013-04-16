@@ -4,19 +4,22 @@ TEX = $(shell ls *.tex)
 NAME = $(TEX:%.tex=%)
 OPEN =
 
-all: $(NAME).pdf
+all: $(NAME:%=%.pdf)
 
-$(NAME).pdf: $(NAME).dvi
-$(NAME).dvi: $(NAME).tex
-
-.tex.dvi:
+%.pdf: %.dvi
+	dvipdfm $<
+%.dvi: %.tex
 	platex $<
 
-.dvi.pdf:
-	dvipdfm $<
-
 clean:
-	rm $(NAME).pdf $(NAME).dvi
+	@rm -fv *.blg
+	@rm -fv *.log
+	@rm -fv *.toc
+	@rm -fv *.pdf
+	@rm -fv *.dvi
+	@rm -fv *.bbl
+	@rm -fv *.orig
+	@rm -fv *.aux
 
 show:
 	gv -watch $(OPEN:.tex=.pdf)&
